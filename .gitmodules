@@ -1,3 +1,3 @@
 [submodule "vimrc"]
-    path = vimrc
-    url = https://github.com/vmaksymiv/vimrc.git
+	path = vimrc
+	url = https://github.com/vmaksymiv/vimrc.git
