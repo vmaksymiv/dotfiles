@@ -4,7 +4,7 @@
 git clone https://github.com/vmaksymiv/dotfiles.git $HOME/dotfiles
 
 ### apply configuration
-ln -s $HOME/dotfiles/.tmuxrc $HOME/.tmuxrc
+ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/.gitconfig $HOME/.gitconfig
 
 ### init vim
