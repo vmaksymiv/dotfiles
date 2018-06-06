@@ -1,7 +1,12 @@
 #!/bin/bash
 
 ### get source
-git clone https://github.com/vmaksymiv/dotfiles.git $HOME/dotfiles
+if [ ! -d $HOME/dotfiles ]; then
+    git clone https://github.com/vmaksymiv/dotfiles.git $HOME/dotfiles
+else
+    cd $HOME/dotfiles
+    git pull
+fi
 
 ### apply configuration
 ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
@@ -16,3 +21,14 @@ ln -s $HOME/dotfiles/vimrc/.vim $HOME/.vim
 ### fetch vim plugins
 cd $HOME/dotfiles/vimrc
 git submodule update --init
+
+### install pyenv
+if [ ! -d $HOME/.pyenv ]; then
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+    cat >> $HOME/.bashrc <<EOM
+export PATH="~/.pyenv/bin:\$PATH"
+eval "\$(pyenv init -)"
+eval "\$(pyenv virtualenv-init -)"
+EOM
+
+fi
