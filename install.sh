@@ -22,13 +22,21 @@ ln -s $HOME/dotfiles/vimrc/.vim $HOME/.vim
 cd $HOME/dotfiles/vimrc
 git submodule update --init
 
+### use vim as default editor
+if ! grep -Fxq "EDITOR=vim" $HOME/.bashrc; then
+cat >> $HOME/.bashrc <<EOM
+EDITOR=vim
+
+EOM
+fi
+
 ### install pyenv
 if [ ! -d $HOME/.pyenv ]; then
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
     cat >> $HOME/.bashrc <<EOM
-export PATH="~/.pyenv/bin:\$PATH"
+PATH="~/.pyenv/bin:\$PATH"
 eval "\$(pyenv init -)"
 eval "\$(pyenv virtualenv-init -)"
-EOM
 
+EOM
 fi
