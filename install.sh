@@ -40,3 +40,5 @@ eval "\$(pyenv virtualenv-init -)"
 
 EOM
 fi
+
+bash -c "pyenv install 3.6.5"
