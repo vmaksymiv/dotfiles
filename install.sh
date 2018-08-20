@@ -25,10 +25,20 @@ git submodule update --init
 ### use vim as default editor
 if ! grep -Fxq "EDITOR=vim" $HOME/.bashrc; then
 cat >> $HOME/.bashrc <<EOM
+VISUAL=vim
 EDITOR=vim
 
 EOM
 fi
+
+## frequently used settings
+if ! grep -Fxq "MSP_DOCKER_IP" $HOME/.bashrc; then
+cat >> $HOME/.bashrc <<EOM
+MSP_DOCKER_IP=127.0.0.1
+
+EOM
+fi
+
 
 ### install pyenv
 if [ ! -d $HOME/.pyenv ]; then
@@ -41,4 +51,4 @@ eval "\$(pyenv virtualenv-init -)"
 EOM
 fi
 
-bash -c "pyenv install 3.6.5"
+tmux new-session -d -s executions "pyenv install 3.6.5"
