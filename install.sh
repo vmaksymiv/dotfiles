@@ -25,8 +25,8 @@ git submodule update --init
 ### use vim as default editor
 if ! grep -Fxq "EDITOR=vim" $HOME/.bashrc; then
 cat >> $HOME/.bashrc <<EOM
-VISUAL=vim
-EDITOR=vim
+export VISUAL=vim
+export EDITOR=vim
 
 EOM
 fi
@@ -34,7 +34,7 @@ fi
 ## frequently used settings
 if ! grep -Fxq "MSP_DOCKER_IP" $HOME/.bashrc; then
 cat >> $HOME/.bashrc <<EOM
-MSP_DOCKER_IP=127.0.0.1
+export MSP_DOCKER_IP=127.0.0.1
 
 EOM
 fi
