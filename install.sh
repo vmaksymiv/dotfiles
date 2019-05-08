@@ -31,15 +31,6 @@ export EDITOR=vim
 EOM
 fi
 
-## frequently used settings
-if ! grep -Fxq "MSP_DOCKER_IP" $HOME/.bashrc; then
-cat >> $HOME/.bashrc <<EOM
-export MSP_DOCKER_IP=127.0.0.1
-
-EOM
-fi
-
-
 ### install pyenv
 if [ ! -d $HOME/.pyenv ]; then
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
@@ -51,4 +42,5 @@ eval "\$(pyenv virtualenv-init -)"
 EOM
 fi
 
-tmux new-session -d -s executions "pyenv install 3.6.5"
+tmux new-session -d -s py36 "pyenv install -s 3.6.8"
+tmux new-session -d -s py37 "pyenv install -s 3.7.3"
